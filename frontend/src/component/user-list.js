@@ -7,9 +7,10 @@ class Users extends React.Component{
 
     handleUsers(){
         console.log(this.props.users)
-        if (this.props.users == null){
+        if (this.props.users === null){
             return null
         } else{
+            console.log(this.props.users)
             return(
                 this.props.users.map((user) => {
                         return(
@@ -24,10 +25,14 @@ class Users extends React.Component{
 
     }
 
+    componentDidMount(){
+        {() => this.props.loadUser()}
+    }
+
     render() {
         return (
             <div>
-                {this.props.loadUser()}
+                
                 {this.handleUsers()}
             </div>
         );
