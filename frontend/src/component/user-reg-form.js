@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import {Redirect, withRouter} from "react-router-dom";
+import { withRouter} from "react-router-dom";
 
 class InsertForm extends React.Component{
 
@@ -27,15 +27,6 @@ class InsertForm extends React.Component{
         })
     }
 
-    componentDidMount() {
-        let data = []
-        axios.get('http://127.0.0.1:8000/api/')
-            .then(res => {
-                data = res.data
-                console.log(data)
-            });
-
-    }
 
 
 

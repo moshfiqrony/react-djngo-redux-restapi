@@ -1,56 +1,31 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {bindActionCreators} from "redux";
-import {loadUser} from "../actions";
+import * as actionCreators from '../actions/index'
 
 class Users extends React.Component{
 
-    handleUsers(){
-        console.log(this.props.users)
-        if (this.props.users === null){
-            return null
-        } else{
-            console.log(this.props.users)
-            return(
-                this.props.users.map((user) => {
-                        return(
-                            <div>
-                                <p>{user.name}</p>
-                                <img src={user.image} width='400' alt='...' />
-                            </div>
-                        )
-                    })
-            )
-        }
-
+    handleLoad(){
+        this.props.users.map((user) => {
+            return(<p>{user.name}</p>)
+        })
     }
 
-    componentDidMount(){
-        {() => this.props.loadUser()}
-    }
 
     render() {
         return (
             <div>
-                
-                {this.handleUsers()}
+                <button onClick={this.props.loadUser}>Click Me</button>
+                <button onClick={this.handleLoad}>cc</button>
             </div>
         );
     }
 }
 
 function mapStateToProps(state) {
-    return{
-        users: state.users
-    }
+   return{
+    users: state.users
+   }
 }
 
 
-function matchDispatchToProps(dispatch) {
-    return(
-        bindActionCreators({loadUser: loadUser}, dispatch)
-    )
-}
-
-
-export default connect(mapStateToProps, matchDispatchToProps) (Users);
+export default connect(mapStateToProps, actionCreators) (Users);
