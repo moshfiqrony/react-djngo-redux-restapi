@@ -10,6 +10,7 @@ export function loadUser(){
 }
 
 export function passData(data){
+    console.log('I am from load user')
     return{
         type: 'user_load',
         payload: data

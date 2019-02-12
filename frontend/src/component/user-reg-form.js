@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
-import { withRouter} from "react-router-dom";
+import {connect} from 'react-redux'
+import * as actionCreators from '../actions/index'
 
 class InsertForm extends React.Component{
 
@@ -43,7 +44,7 @@ class InsertForm extends React.Component{
         fd.append('address', address);
         axios.post('http://127.0.0.1:8000/api/',fd)
             .then(res => alert(res.statusText))
-            .then(()=>{return(this.props.history.push('/'))})
+            .then(() => this.props.loadUser())
     }
 
 
@@ -84,4 +85,5 @@ class InsertForm extends React.Component{
     }
 }
 
-export default withRouter(InsertForm);
+ 
+ export default connect(null, actionCreators) (InsertForm);

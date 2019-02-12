@@ -4,7 +4,6 @@ import App from './App';
 import {Provider} from 'react-redux'
 import thunk from 'redux-thunk'
 import {createStore, applyMiddleware} from 'redux'
-import * as serviceWorker from './serviceWorker';
 import allReducers from './reducers/index'
 
 
@@ -15,6 +14,3 @@ ReactDOM.render(<Provider store={store}>
     <App/>
 </Provider>,
     document.getElementById('root'));
-
-
-serviceWorker.unregister();

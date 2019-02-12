@@ -1,23 +1,22 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import * as actionCreators from '../actions/index'
+import ShowUsers from './show-user'
 
 class Users extends React.Component{
 
-    handleLoad(){
-        this.props.users.map((user) => {
-            return(<p>{user.name}</p>)
-        })
+    componentDidMount(){
+        this.props.loadUser();
     }
 
-
     render() {
-        return (
-            <div>
-                <button onClick={this.props.loadUser}>Click Me</button>
-                <button onClick={this.handleLoad}>cc</button>
-            </div>
-        );
+        if(!this.props.users){
+            return(null)
+        }else {
+            return(
+                <ShowUsers data = {this.props.users}/>
+            )
+        }
     }
 }
 
